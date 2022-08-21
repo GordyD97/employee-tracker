@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const inquirer = require("inquirer");
-const mysql2 = require('mysql2');
-const cTable = require('console.table');
+const mysql = require('mysql');
+const consoleTable = require('console.table');
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -118,33 +120,27 @@ function viewAllEmployees() {
             console.table(res)
             runEmployeeDB()
         })
-}
+};
 
 // VIEW DEPARTMENTS ______________________
-function viewAllDepts() {
-    connection.query("SELECT department.id AS ID, department.name AS Department FROM department",
-        function (err, res) {
-            if (err) throw err
-            console.log("")
-            console.log("*** DEPARTMENT LIST ***")
-            console.log("")
-            console.table(res)
-            runEmployeeDB()
-        })
-}
+function viewDepartments() {
+    var query = 'SELECT * FROM department';
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.table('All Departments:', res);
+        options();
+    })
+};
 
 // VIEW ROLES ______________________
-function viewAllRoles() {
-    connection.query("SELECT role.id AS Dept_ID, role.title AS Title FROM role",
-        function (err, res) {
-            if (err) throw err
-            console.log("")
-            console.log("*** ROLE LIST ***")
-            console.log("")
-            console.table(res)
-            runEmployeeDB()
-        })
-}
+function viewRoles() {
+    var query = 'SELECT * FROM role';
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.table('All Roles:', res);
+        options();
+    })
+};
 
 // VIEW EMPLOYEES BY DEPARTMENT --------------
 function viewEmployeesByDept() {
