@@ -9,7 +9,8 @@ const connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "Battlestation!", //Enter your MySQL password here.
-    database: "employees_db"
+    // use gitignore on this. 
+    database: "employee_tracker_db"
 });
 
 connection.connect(function (err) {
@@ -35,15 +36,16 @@ function runEmployeeDB() {
             message: "What would you like to do today?",
             name: "action",
             choices: [
-                "View All Employees",
-                "View All Departments",
-                "View All Roles",
-                "View All Employees by Department",
-                "View All Employees by Role",
-                "Add Department",
-                "Add Role",
-                "Add Employee",
-                "Update Employee Role",
+                "View All employees",
+                "View All departments",
+                "View All roles",
+                // "View All Employees by Department",
+                // "View All Employees by Role",
+                "Add department",
+                "Add role",
+                "Add employee",
+                "Update employee role",
+                "Delete an employee",
                 "Exit"
             ]
         }
@@ -52,23 +54,23 @@ function runEmployeeDB() {
 
             // VIEW ALL EMPLOYEES ___________________
             case "View All Employees":
-                viewAllEmployees();
+                viewEmployees();
                 break;
 
             // VIEW ALL DEPARTMENTS _________________
             case "View All Departments":
-                viewAllDepts();
+                viewDepartments();
                 break;
 
             // VIEW ALL ROLES ______________________
             case "View All Roles":
-                viewAllRoles();
+                viewRoles();
                 break;
 
-            // VIEW ALL EMPLOYES BY DEPT ____________
-            case "View All Employees by Department":
-                viewEmployeesByDept();
-                break;
+            // // VIEW ALL EMPLOYES BY DEPT ____________
+            // case "View All Employees by Department":
+            //     viewEmployeesByDept();
+            //     break;
 
             // VIEW EMPLOYEES BY ROLE ______________
             case "View All Employees by Role":
@@ -107,6 +109,58 @@ function runEmployeeDB() {
         }
     })
 };
+
+// function options() {
+//     inquirer
+//         .prompt({
+//             name: 'action',
+//             type: 'list',
+//             message: 'Welcome to our employee database! What would you like to do?',
+//             choices: [
+//                 'View all employees',
+//                 'View all departments',
+//                 'View all roles',
+//                 'Add an employee',
+//                 'Add a department',
+//                 'Add a role',
+//                 'Update employee role',
+//                 'Delete an employee',
+//                 'EXIT'
+//             ]
+//         }).then(function (answer) {
+//             switch (answer.action) {
+//                 case 'View all employees':
+//                     viewEmployees();
+//                     break;
+//                 case 'View all departments':
+//                     viewDepartments();
+//                     break;
+//                 case 'View all roles':
+//                     viewRoles();
+//                     break;
+//                 case 'Add an employee':
+//                     addEmployee();
+//                     break;
+//                 case 'Add a department':
+//                     addDepartment();
+//                     break;
+//                 case 'Add a role':
+//                     addRole();
+//                     break;
+//                 case 'Update employee role':
+//                     updateRole();
+//                     break;
+//                 case 'Delete an employee':
+//                     deleteEmployee();
+//                     break;
+//                 case 'EXIT':
+//                     exitApp();
+//                     break;
+//                 default:
+//                     break;
+//             }
+//         })
+// };
 
 // VIEW EMPLOYEES ________________________
 function viewAllEmployees() {
