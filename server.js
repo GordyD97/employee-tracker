@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "", //Enter your MySQL password here.
+    password: "Battlestation!", //Enter your MySQL password here.
     database: "employees_db"
 });
 
@@ -360,4 +360,8 @@ function addRole() {
             )
         });
     });
+};
+
+function exitApp() {
+    connection.end();
 };
