@@ -26,7 +26,7 @@ This is a CLI command-line application to manage a company's employee database, 
 ![git hub repository](https://github.com/GordyD97/employee-tracker)
 
 ### Live demo
-![]()
+![live demo](./public/Gif/employeetracker.gif)
 
 ### Screen shot
 ![application screenshot](./public/images/employeetracker.PNG)
